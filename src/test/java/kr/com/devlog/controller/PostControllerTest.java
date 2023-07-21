@@ -65,9 +65,20 @@ class PostControllerTest {
                 andExpect(status().isOk()).
                 andDo(print());
         assertEquals(1L, postRepository.count());
-
-        Post post = postRepository.findById(1L).orElseThrow(NullPointerException::new);
-        assertEquals("제목입니다.", post.getTitle());
+        Post post=postRepository.findAll().get(0);
+        assertEquals("제목입니다.",post.getTitle());
         assertEquals("내용입니다",post.getContent());
+//        List<Post> all = postRepository.findAll();
+//        Post findPost=new Post();
+//        for (Post post : all) {
+//            findPost.setTitle(post.getTitle());
+//            findPost.setContent(post.getContent());
+//        }
+//        System.out.println(findPost.getTitle());
+//
+//
+//        Post post = postRepository.findPostByTitle("제목입니다.");
+//        assertEquals("제목입니다.", post.getTitle());
+//        assertEquals("내용입니다",post.getContent());
     }
 }
