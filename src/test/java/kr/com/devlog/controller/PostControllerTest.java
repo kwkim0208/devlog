@@ -90,4 +90,4 @@ class PostControllerTest {
 //        assertEquals("제목입니다.", post.getTitle());
 //        assertEquals("내용입니다",post.getContent());
     }
-}
+} q
