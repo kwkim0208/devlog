@@ -45,7 +45,7 @@ class PostControllerTest {
         //contentType
         mockMvc.perform(post("/posts").contentType(APPLICATION_JSON).content(jsonData)).
                 andExpect(status().isOk()).
-                andExpect(content().string("{}")).
+                andExpect(content().string("")).
                 andDo(print());
     }
 

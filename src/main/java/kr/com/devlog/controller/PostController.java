@@ -35,7 +35,7 @@ public class PostController {
  }*/
 ///데이터 검증이 필요한이유 서버의 안전성을 높이기위해서
     @PostMapping("/posts")
-    public Map<String,String> get(@Valid @RequestBody PostCreate params ) {
+    public void post(@Valid @RequestBody PostCreate params ) {
      /*   Map<String,String> error=new HashMap<>();
         if(result.hasErrors()){
             List<FieldError> fieldErrors = result.getFieldErrors();
@@ -54,6 +54,15 @@ public class PostController {
             throw new Exception("타이값이 없어요");
         }*/
         postService.write(params);
-        return Map.of() ;
+
+
+
+
+
+
+
+
+
+
     }
 }

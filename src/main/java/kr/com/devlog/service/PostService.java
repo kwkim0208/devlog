@@ -14,8 +14,9 @@ import org.springframework.stereotype.Service;
 public class PostService {
 
     private final PostRepository postRepository;
-    public void write(PostCreate postCreate){
-        Post post = new Post(postCreate.getTitle(), postCreate.getContent());
+
+    public void write(PostCreate postCreate) {
+        Post post = Post.builder().title(postCreate.getTitle()).content(postCreate.getContent()).build();
         postRepository.save(post);
 
     }
