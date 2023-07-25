@@ -3,6 +3,7 @@ package kr.com.devlog.service;
 import kr.com.devlog.Repository.PostRepository;
 import kr.com.devlog.domain.Post;
 import kr.com.devlog.request.PostCreate;
+import kr.com.devlog.response.PostResponse;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
@@ -40,10 +41,11 @@ class PostServiceTest {
         Post requestPost = Post.builder().title("foo").content("bar").build();
         postRepository.save(requestPost);
         Long postId = 1L;
-        Post post = postService.getPost(requestPost.getId());
+        PostResponse postResponse = postService.getPost(requestPost.getId());
 
-        assertNotNull(post);
-        assertEquals("foo", post.getTitle());
-        assertEquals("bar", post.getContent());
+        assertNotNull(postResponse);
+        assertEquals("foo", postResponse.getTitle());
+        assertEquals("bar", postResponse.getContent());
     }
+
 }

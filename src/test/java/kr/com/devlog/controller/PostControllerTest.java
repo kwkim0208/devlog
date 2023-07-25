@@ -104,4 +104,16 @@ class PostControllerTest {
                 .andExpect(jsonPath("$.content").value("bar"))
                 .andDo(print());
     }
+    @Test
+    @DisplayName("글한개 조회 && 글 제목은 10글자까지만 가능")
+    void test5() throws Exception{
+        Post post=Post.builder().title("1234567890123456").content("bar").build();
+        postRepository.save(post);
+        mockMvc.perform(get("/posts/{postId}",post.getId()).contentType(APPLICATION_JSON))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$.id").value(post.getId()))
+                .andExpect(jsonPath("$.title").value("1234567890"))
+                .andExpect(jsonPath("$.content").value("bar"))
+                .andDo(print());
+    }
 }
