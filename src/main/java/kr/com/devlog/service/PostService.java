@@ -9,6 +9,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Slf4j
 @Service
@@ -30,7 +31,9 @@ public class PostService {
 
     }
 
-    public List<Post> getAllPosts() {
-        return postRepository.findAll();
+    public List<PostResponse> getAllPosts() {
+        return postRepository.findAll().stream().map(post -> {
+            return PostResponse.builder().id(post.getId()).title(post.getTitle()).content(post.getContent()).build();
+        }).collect(Collectors.toList());
     }
 }
