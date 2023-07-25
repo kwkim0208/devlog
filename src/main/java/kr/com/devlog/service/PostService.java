@@ -8,6 +8,8 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Slf4j
 @Service
 @RequiredArgsConstructor
@@ -26,5 +28,9 @@ public class PostService {
         PostResponse postResponse = PostResponse.builder().id(post.getId()).title(post.getTitle()).content(post.getContent()).build();
         return postResponse;
 
+    }
+
+    public List<Post> getAllPosts() {
+        return postRepository.findAll();
     }
 }

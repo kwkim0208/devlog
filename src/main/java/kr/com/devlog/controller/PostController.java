@@ -10,6 +10,8 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @Slf4j
 @RequiredArgsConstructor
@@ -53,5 +55,9 @@ public class PostController {
     public PostResponse getPost(@PathVariable(name = "postId")Long id){
         PostResponse post = postService.getPost(id);
         return post;
+    }
+    @GetMapping("/posts")
+    public List<Post> getAllPosts(){
+        return postService.getAllPosts();
     }
 }
