@@ -2,19 +2,12 @@ package kr.com.devlog.controller;
 
 
 import jakarta.validation.Valid;
+import kr.com.devlog.domain.Post;
 import kr.com.devlog.request.PostCreate;
 import kr.com.devlog.service.PostService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.validation.BindingResult;
-import org.springframework.validation.FieldError;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
-
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @Slf4j
@@ -54,15 +47,10 @@ public class PostController {
             throw new Exception("타이값이 없어요");
         }*/
         postService.write(params);
-
-
-
-
-
-
-
-
-
-
+    }
+    @GetMapping("/posts/{postId}")
+    public Post getPost(@PathVariable(name = "postId")Long id){
+        Post post = postService.getPost(id);
+        return post;
     }
 }
