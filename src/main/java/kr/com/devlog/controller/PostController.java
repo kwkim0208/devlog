@@ -4,6 +4,7 @@ package kr.com.devlog.controller;
 import jakarta.validation.Valid;
 import kr.com.devlog.domain.Post;
 import kr.com.devlog.request.PostCreate;
+import kr.com.devlog.response.PostResponse;
 import kr.com.devlog.service.PostService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -49,8 +50,8 @@ public class PostController {
         postService.write(params);
     }
     @GetMapping("/posts/{postId}")
-    public Post getPost(@PathVariable(name = "postId")Long id){
-        Post post = postService.getPost(id);
+    public PostResponse getPost(@PathVariable(name = "postId")Long id){
+        PostResponse post = postService.getPost(id);
         return post;
     }
 }
