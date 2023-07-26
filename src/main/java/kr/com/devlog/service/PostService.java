@@ -32,8 +32,6 @@ public class PostService {
     }
 
     public List<PostResponse> getAllPosts() {
-        return postRepository.findAll().stream().map(post -> {
-            return PostResponse.builder().id(post.getId()).title(post.getTitle()).content(post.getContent()).build();
-        }).collect(Collectors.toList());
+        return postRepository.findAll().stream().map(PostResponse::new).collect(Collectors.toList());
     }
 }
